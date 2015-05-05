@@ -7,6 +7,12 @@ jQuery(function($) {
     $(".post-content").fitVids();
 
     /* ============================================================ */
+    /* Syntax Highlighting */
+    /* ============================================================ */
+
+    hljs.initHighlightingOnLoad();
+
+    /* ============================================================ */
     /* Scroll To Top */
     /* ============================================================ */
 
@@ -70,6 +76,11 @@ jQuery(function($) {
 
                 // Re run fitvid.js
                 $newContent.fitVids();
+
+                // Re run highlight.js
+                $newContent.find('pre code').each(function(i, block) {
+                    hljs.highlightBlock(block);
+                });
 
                 $ajaxContainer.html($newContent);
                 $ajaxContainer.fadeIn(500);
